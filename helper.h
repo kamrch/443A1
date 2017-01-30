@@ -1,3 +1,5 @@
+#define MAX_LENGTH 256
+
 typedef struct record{
     int uid1;
     int uid2;
