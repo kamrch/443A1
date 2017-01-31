@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
 		
 		int offset = 0;
 		
-        if (!(fp_write = fopen ("records.dat" , "wb")) || !(fp_read = fopen(file_name, "rb"))) {
+        if (!(fp_write = fopen ("records.dat" , "wb")) || !(fp_read = fopen(file_name, "r"))) {
                printf ("Error when opening file(s).\n");
                return -1;
         }
