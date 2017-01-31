@@ -6,4 +6,4 @@ typedef struct record{
 } Record;
 
 
-Record* parseRecord (char* str);
+Record parseRecord (char* str);

@@ -9,12 +9,13 @@
 /**
  * Work in progress*****
  * **/
-Record *parseRecord(char* str) {
+Record parseRecord(char* str) {
 
-    Record r;
-    
-    r.uid1 = atoi(strtok(str, ","));
-    r.uid2 = atoi(strtok(NULL, ","));
+    Record record;
 
-    return r; 
+    /* Parsing records using strtok */
+    record.uid1 = atoi(strtok(str, ","));
+    record.uid2 = atoi(strtok(NULL, ","));
+
+    return record;
 }

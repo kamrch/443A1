@@ -5,37 +5,37 @@
 #include "helper.h"
 
 
-
 int main(int argc, char *argv[]){
 		/*Check if user input correct arguments*/
 		if (argc != 3){
     		printf("Usage: write_blocks_seq <input filename> <block size>\n");
     		return -1;
 		}
-		char *filename = argv[1];
+		char *file_name = argv[1];
 		int block_size = atoi(argv[2]);
+		char current_line[MAX_CHARS_PER_LINE];
 		
-		int records_per_block = block_size / sizeof(Record));
+		int records_per_block = block_size / sizeof(Record);
 		
 		/*Codes for recording time*/
 		struct timeb t_begin, t_end;
 		long total_records = 0;
-		
-		long timeSpent;
+
+        long time_spent_ms;
 		
 		/*FILE pointers*/
 		FILE *fp_read, *fp_write;
 		
-		Record * buffer = (record *) calloc (records_per_block, sizeof (record)) ;
-		/*Record* data = parseRecord(fp_read, MAX_LENGTH);*/
+		Record * buffer = (Record *) calloc (records_per_block, sizeof (Record)) ;
 		
 		int offset = 0;
 		
-    if (!(fp_write = fopen ("records.dat" , "wb")) || !(fp_read = fopen(file_name, "rb"))) {
-        printf ("Error when opening file(s).\n");
-        return -1;
-		}
+        if (!(fp_write = fopen ("records.dat" , "wb")) || !(fp_read = fopen(file_name, "rb"))) {
+               printf ("Error when opening file(s).\n");
+               return -1;
+        }
 		
+		int n = 0;
 		ftime(&t_begin);
 		/*Start clock before or after allocating buffer?*/
 		
@@ -47,11 +47,11 @@ int main(int argc, char *argv[]){
 	    	if (offset >= records_per_block){
 					fwrite ( buffer, sizeof(Record), offset, fp_write);
 					fflush (fp_write);
-					j = 0;
+					n = 0;
 					offset = 0;
 	    	}
-	    	buffer[j] = r;
-	    	j+=1;
+	    	buffer[n] = r;
+	    	n+=1;
 	    	offset+=1;
 	    	total_records += 1;
 			}			
@@ -66,7 +66,8 @@ int main(int argc, char *argv[]){
 		fclose(fp_write);
 		
 		 ftime(&t_end);
-		 
+
+        /* force data to disk */
 		 free(buffer);
 		 fclose(fp_read);
 		 
