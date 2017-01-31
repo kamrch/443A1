@@ -1,4 +1,4 @@
-#define MAX_LENGTH 256
+#define MAX_CHARS_PER_LINE 256
 
 typedef struct record{
     int uid1;
@@ -6,4 +6,4 @@ typedef struct record{
 } Record;
 
 
-Record* parseRecord (FILE *fp, int MAX_CHARS_PER_LINE);
+Record* parseRecord (char* str);

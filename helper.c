@@ -5,23 +5,16 @@
 #include "helper.h"
 
 
-/* Parse an individual record and returns 1 record */
+/* Parse string into a record */
 /**
  * Work in progress*****
  * **/
-Record* parseRecord (FILE *fp, int MAX_CHARS_PER_LINE){
+Record *parseRecord(char* str) {
 
-    char current_line[MAX_CHARS_PER_LINE];
-    Record* temp = (Record *)malloc(sizeof(Record));
+    Record r;
+    
+    r.uid1 = atoi(strtok(str, ","));
+    r.uid2 = atoi(strtok(NULL, ","));
 
-    if(fgets(current_line, MAX_CHARS_PER_LINE, fp) != NULL){
-        char* split = strtok(current_line, ",");
-        temp->uid1 = atoi(split);
-        split = strtok(NULL, ",");
-        temp->uid2 = atoi(split);
-        return temp;
-    }
-    else
-        free(temp);
-    return NULL;
-}}
+    return r; 
+}
