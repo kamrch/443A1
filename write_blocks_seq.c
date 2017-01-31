@@ -79,5 +79,5 @@ int main(int argc, char *argv[]){
 		
 		/* result in MB per second */
 		printf ("Data rate: %.3f MBPS\n", ((total_records*sizeof(Record))/(float)time_spent_ms * 1000)/(1024*1024));
-		
+		return 0;
 }	

@@ -28,14 +28,12 @@ int main(int argc, char *argv[]){
 
 
 
-    int offset = 0;
-
     if (!(fp_write = fopen ("records.dat" , "wb")) || !(fp_read = fopen(file_name, "rb"))) {
         printf ("Error when opening file(s).\n");
         return -1;
     }
 
-    int n = 0;
+
     ftime(&t_begin);
     /*Start clock before or after allocating buffer?*/
 
@@ -51,7 +49,6 @@ int main(int argc, char *argv[]){
     ftime(&t_end);
 
     /* force data to disk */
-    free(buffer);
     fclose(fp_read);
 
     time_spent_ms = (long) (1000 *(t_end.time - t_begin.time) + (t_end.millitm - t_begin.millitm));
@@ -59,5 +56,7 @@ int main(int argc, char *argv[]){
 
     /* result in MB per second */
     printf ("Data rate: %.3f MBPS\n", (total_length/(float)time_spent_ms * 1000)/(1024*1024));
+    
+    return 0;
 
 }
