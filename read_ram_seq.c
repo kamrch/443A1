@@ -49,7 +49,7 @@ int main(int argc, char *argv[]){
     ftime(&t_begin);
     /* Read records into buffer */
     while (fread(buffer, sizeof(Record), records_per_block, fp_read) > 0){
-        int i = 0
+        int i = 0;
         while (i < records_per_block){
             if (buffer[i].uid1 == cur_uid1){
                 cur_uid1_counter += 1;
