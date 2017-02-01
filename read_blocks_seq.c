@@ -40,10 +40,10 @@ int main(int argc, char *argv[]){
     int max_uid1 = 0;
     int num_unique_uid1s = 0;
 
-    fttime(&t_begin);
+    ftime(&t_begin);
     /* Read records into buffer */
     while (fread(buffer, sizeof(Record), records_per_block, fp_read) > 0){
-        for (i = 0; i < records_per_block; i++){
+        for (int i = 0; i < records_per_block; i++){
             if (buffer[i].uid1 == cur_uid1){
                 cur_uid1_counter += 1;
             }
@@ -54,19 +54,19 @@ int main(int argc, char *argv[]){
                 cur_uid1 = buffer[i].uid1;
                 /* Reset counter for new uid1 */
                 cur_uid1_counter = 1;
-                num_unique_uid1 += 1;              
+                num_unique_uid1s += 1;              
             }
         }
     }
 
     fclose(fp_read);
     free(buffer);
-    fttime(&t_end);
+    ftime(&t_end);
 
     time_spent_ms = (long) (1000 *(t_end.time - t_begin.time) + (t_end.millitm - t_begin.millitm));
 
     /* Printing max and average*/
-    printf("Max: %d\n Average: %f\n", max_uid1, num_unique_uid1 / total_records);
+    printf("Max: %d\n Average: %f\n", max_uid1, num_unique_uid1s / (float)total_records);
     /* result in MB per second */
     printf ("Data rate: %.3f MBPS\n", ((total_records*sizeof(Record))/(float)time_spent_ms * 1000)/(1024*1024));
  

@@ -11,7 +11,7 @@ WRITE_BLOCKS_SRC=helper.c write_blocks_seq.c
 
 WRITE_LINES_SRC=helper.c write_lines.c
 
-READ_BLOCKS_SEQ_SRC=helper.c read_blocks_seq
+READ_BLOCKS_SEQ_SRC=helper.c read_blocks_seq.c
  
 # Binaries
 all: write_blocks_seq write_lines read_blocks_seq
