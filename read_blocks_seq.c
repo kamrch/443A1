@@ -7,7 +7,7 @@
 int main(int argc, char *argv[]){
     /*Check if user input correct arguments*/
     if (argc != 3){
-        printf("Usage: read_block_seq <input file name> <block size>\n");
+        printf("Usage: read_blocks_seq <input file name> <block size>\n");
         return -1;
     }
 
