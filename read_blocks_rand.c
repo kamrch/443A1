@@ -14,7 +14,7 @@ int main(int argc, char *argv[]){
     /*Check if user input correct arguments*/
     if (argc != 4){
         printf("Usage: read_blocks_rand <input filename> <block_size> <random_number>\n");
-        return -1;int
+        return -1;
     }
     char *file_name = argv[1];
     int block_size = atoi(argv[2]);
@@ -36,9 +36,9 @@ int main(int argc, char *argv[]){
     struct timeb t_begin, t_end;
     
     /*Use fseek to find the file size and to reset pointer*/
-    fseek(fp_read, 0L, SEEK_END);
+    fseek(fp_read, 0, SEEK_END);
     int file_size = ftell(fp_read);
-    fseek(fp_read, 0L, SEEK_SET);
+    fseek(fp_read, 0, SEEK_SET);
     long total_records = file_size / sizeof(Record);
     
     int max_followers_uid =0;
