@@ -14,6 +14,12 @@ int main(int argc, char *argv[]){
     char *file_name = argv[1];
     int block_size = atoi(argv[2]);
 
+    /* Validate block size*/
+    if (block_size % sizeof(Record) != 0){
+        printf("Block size must be a multiple of size of a record");
+        return -1;
+    }
+
     int records_per_block = block_size / sizeof(Record);
     FILE *fp_read;
 
